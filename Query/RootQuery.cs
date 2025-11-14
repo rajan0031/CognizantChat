@@ -14,6 +14,8 @@ namespace Server.Query
         {
 
             Field<UserQuery>("userQuery").Resolve(context => new { });
+            Field<MessageQuery>("messageQuery").Resolve(context => new { });
+
 
         }
 

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
-using Server.interfaces;
+using Server.Interfaces;
 using Server.Services;
 using Server.Type;
 using Server.Query;
@@ -9,19 +9,33 @@ using GraphQL;
 using GraphQL.Server;
 using GraphQL.Types;
 using GraphiQl;
+using Server.Mutation;
+using GraphQLProject.Mutation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Register repositories
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 
 // Register GraphQL types
 builder.Services.AddTransient<UserType>();
 builder.Services.AddTransient<UserInputType>();
+builder.Services.AddTransient<MessageInputType>();
+builder.Services.AddTransient<MessageType>();
+
+
 
 // Register queries
 builder.Services.AddTransient<UserQuery>();
+builder.Services.AddTransient<MessageQuery>();
 builder.Services.AddTransient<RootQuery>();
+
+// register the mutations 
+builder.Services.AddTransient<UserMutation>();
+builder.Services.AddTransient<MessageMutation>();
+builder.Services.AddTransient<RootMutation>();
+
 
 // Register schema
 builder.Services.AddTransient<ISchema, RootSchema>();

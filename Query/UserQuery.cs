@@ -1,5 +1,5 @@
 using GraphQL.Types;
-using Server.interfaces;
+using Server.Interfaces;
 using Server.Models;
 using Server.Type;
 
