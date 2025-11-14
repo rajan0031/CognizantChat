@@ -1,0 +1,62 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+
+# Visual Studio
+.vs/
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# Logs
+*.log
+
+# Database files
+*.mdf
+*.ldf
+
+# EF Core Migrations snapshot
+Migrations/*Designer.cs
+Migrations/*Snapshot.cs
+
+# GraphQL schema dumps (if you export them)
+*.graphql
+*.gql
+
+# Configuration
+appsettings.Development.json
+appsettings.Local.json
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Backup & temp files
+*.bak
+*.tmp
+*.temp
