@@ -27,7 +27,7 @@ namespace Server.Services
 
         public List<Message> GetAllMessage(int senderId, int receiverId)
         {
-            return dbcontext.Messages.Where(m=>m.SenderId==senderId && m.ReceiverId==receiverId).ToList();
+            return dbcontext.Messages.Where(m => (m.SenderId == senderId && m.ReceiverId == receiverId) || m.SenderId == receiverId && m.ReceiverId == senderId).ToList();
         }
     }
 

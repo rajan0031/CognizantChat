@@ -21,6 +21,12 @@ namespace Server.Services
 
         public User AddUser(User user)
         {
+            var email = user.Email;
+            var result = dbcontext.Users.FirstOrDefault(u => u.Email == email);
+            if (result != null)
+            {
+                return null;
+            }
             dbcontext.Users.Add(user);
             dbcontext.SaveChanges();
             return user;
@@ -28,7 +34,20 @@ namespace Server.Services
 
         public List<User> GetAllUser()
         {
-           return dbcontext.Users.ToList();
+            return dbcontext.Users.ToList();
+        }
+
+        public User LoginUser(string email,string password)
+        {
+           
+
+            var result = dbcontext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            if (result == null)
+            {
+                return null;
+            }
+
+            return result;
         }
     }
 

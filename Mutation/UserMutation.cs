@@ -12,8 +12,6 @@ namespace Server.Mutation
     public class UserMutation : ObjectGraphType
     {
 
-
-
         public UserMutation(IUserRepository userRepository)
         {
 
@@ -27,6 +25,20 @@ namespace Server.Mutation
                return userRepository.AddUser(user);
 
            });
+
+            // this is for login the user 
+            Field<UserType>("loginuser")
+     .Arguments(new QueryArguments(
+         new QueryArgument<StringGraphType> { Name = "email" },
+         new QueryArgument<StringGraphType> { Name = "password" }
+     ))
+     .Resolve(context =>
+     {
+         var email = context.GetArgument<string>("email");
+         var password = context.GetArgument<string>("password");
+
+         return userRepository.LoginUser(email, password);
+     });
 
 
 

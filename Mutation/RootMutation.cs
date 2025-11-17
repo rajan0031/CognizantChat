@@ -9,7 +9,7 @@ namespace GraphQLProject.Mutation
         public RootMutation()
         {
             Field<UserMutation>("userMutation").Resolve(context => new { });
-                       Field<MessageMutation>("messageMutation").Resolve(context => new { });
+            Field<MessageMutation>("messageMutation").Resolve(context => new { });
 
 
 

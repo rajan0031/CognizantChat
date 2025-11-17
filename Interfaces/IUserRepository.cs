@@ -9,6 +9,8 @@ namespace Server.Interfaces
         public List<User> GetAllUser();
         public User AddUser(User user);
 
+        public User LoginUser(string email,string password);
+
 
 
     }

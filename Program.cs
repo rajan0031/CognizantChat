@@ -53,7 +53,21 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// cors policy 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularClient",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // only allow Angular app
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
+
+// using cors policy 
+app.UseCors("AllowAngularClient");
 
 // GraphQL endpoint
 // app.UseGraphQL<ISchema>("/graphql");
